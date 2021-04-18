@@ -1,10 +1,17 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+// Used for seeding direct to mongoDB Atlas
+//const MONGODB_URI = 'mongodb+srv://atlas_user:DSUCciXJSYzq2pR@cluster0.iiijs.mongodb.net/workout_tracker?retryWrites=true&w=majority'
+
+mongoose.connect(MONGODB_URI || "mongodb://localhost/workout_tracker",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 let workoutSeed = [
   {
